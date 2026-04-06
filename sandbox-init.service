@@ -1,0 +1,15 @@
+[Unit]
+Description=Sandbox First Boot Initialization
+After=network.target
+ConditionPathExists=!/.sandbox_initialized
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/sandbox-init.sh
+RemainAfterExit=yes
+Environment=HOME=/root
+Environment=NVM_DIR=/root/.nvm
+Environment=PATH=/root/.nvm/versions/node/v24.14.0/bin:/root/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+[Install]
+WantedBy=multi-user.target
