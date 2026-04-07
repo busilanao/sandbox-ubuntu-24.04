@@ -1,9 +1,11 @@
 services:
   sandbox:
-    image: crpi-43tgmmo8r07nsmlg.cn-guangzhou.personal.cr.aliyuncs.com/thrbowl/sandbox:1.0.0
+    image: crpi-43tgmmo8r07nsmlg.cn-guangzhou.personal.cr.aliyuncs.com/thrbowl/sandbox-ubuntu-24.04:1.0.1-amd64
     container_name: sandbox
     restart: always
     # systemd 作为 PID 1 需要完整 cgroup/能力，否则立刻退出 255 并不断重启
     privileged: true
+    ports:
+      - "20022:22"
 #    volumes:
 #      - /opt/code:/code
